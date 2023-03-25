@@ -1,0 +1,30 @@
+.App {
+    box-sizing: border-box;
+    margin: 0;
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: 1px solid black;
+        height: 50px;
+        .categories {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            border: 1px solid black;
+            .nav-items {
+                flex: 1;
+                border: 1px solid black;
+            }
+        }
+        .countries {
+            display: flex;
+            flex-direction: row;
+            width: 10%;
+            .country-items {
+                flex: 1;
+                border: 1px solid black;
+            }
+        }
+    }
+}
