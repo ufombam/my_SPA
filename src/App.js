@@ -132,7 +132,12 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "post" ? <Post currentPost={currentPost}/> : route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country}/> : <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
+          route === "post" ? <Post currentPost={currentPost}/> :
+          route === "categories" ? 
+          <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} handleTabChange={handleTabChange}/> :
+          route === "search" ?
+          <Search getCurrentPost={getCurrentPost} newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country} handleTabChange={handleTabChange}/> :
+          <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
         }
       </div>
     </div>
