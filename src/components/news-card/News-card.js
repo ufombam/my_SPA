@@ -16,7 +16,7 @@ function NewsCard({newsObject, handleTabChange}) {
                     <div className='card-description'>
                         {x.description}
                     </div>
-                    <div className='card-footer' onClick={handleTabChange('post')}>
+                    <div className='card-footer' onClick={() => handleTabChange("post")}>
                         more
                     </div>
                 </div>

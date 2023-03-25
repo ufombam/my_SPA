@@ -1,19 +1,23 @@
 import React from 'react';
-import './news-card.css';
+import './post.css';
 
 
 function Post() {
     return (
-        <div className="news-card" >
-            <div className='card-header'>
+        <div className="post-container" >
+            <div className='post-header'>
+                Title
             </div>
-            <div className='card-image'>
+            <div className='post-image'>
                 <img alt='news-img' src='' />
             </div>
-            <div className='card-description'>
+            <div className='post-description'>
+                <h2>
+                    CONTENT
+                </h2>
             </div>
-            <div className='card-footer'>
-                more
+            <div className='post-footer'>
+                Back to list
             </div>
         </div>
     );

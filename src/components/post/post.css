@@ -1,0 +1,20 @@
+.post-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  height: 100%;
+  text-align: center;
+}
+.post-container .post-header {
+  border: 1px solid black;
+}
+.post-container .post-image {
+  border: 1px solid black;
+  height: 50vh;
+  width: 50vw;
+  align-self: center;
+}
+.post-container .post-description {
+  border: 1px solid black;
+  height: 30vh;
+}/*# sourceMappingURL=post.css.map */
