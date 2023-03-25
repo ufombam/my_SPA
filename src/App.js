@@ -19,7 +19,7 @@ function App() {
           country: "US"
         },
         author: null,
-        title: "Kansas State vs. Michigan State",
+        title: "United State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
@@ -33,7 +33,7 @@ function App() {
           country: "US"
         },
         author: null,
-        title: "Kansas State vs. Michigan State",
+        title: "Newyork State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
@@ -70,11 +70,15 @@ function App() {
     }
   ];
 
-
+  useEffect(() => {
+    filterNewsByCountry()
+  }, [country])
 
   //handles switching of country and filtering of country specific news
   const handleCountryChange = country => {
     setCountry(country);
+    filterNewsByCountry();
+    handleNewsSearch();
   };
 
   //Filter the raw news array depending on the country selected
@@ -84,13 +88,13 @@ function App() {
   }
 
 //Search news and filter handler for Search Page
-  const handleNewsSearch = (e) => {
-    e.preventDefault();
-    const { inputString } = e.target.elements;
+  const handleNewsSearch = () => {
+    const inputElement = document.getElementsByTagName('input');
+    const inputString = inputElement[0].value;
     //filter news for search page
     let filteredNewsArray = rawNews.filter(x => {
       let srchString = x.content.concat(x.description, x.title, x.source.name);
-      if (srchString.toLocaleLowerCase().includes(inputString.value.toLocaleLowerCase()) && x.source.country === country) {
+      if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && x.source.country === country) {
         return x
       }
     })
@@ -113,7 +117,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "categories" ? <Categories newsObject={rawNews}/> : route === "search" ? <Search newsObject={rawNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews}/> : <TopNews newsObject={rawNews}/>
+          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews}/> : <TopNews newsObject={countryNews}/>
         }
       </div>
     </div>

@@ -5,10 +5,8 @@ import NewsCard from '../news-card/News-card';
 function Search({handleNewsSearch, filteredNewsObject}) {
     return (
         <div className="top-news-body">
-            <form action="#" onSubmit={handleNewsSearch}>
-                <input id='inputString'/>
-                <button type='submit'/>
-            </form>
+            <input id='inputString'/>
+            <div onClick={handleNewsSearch}>GO</div>
             <div className='news-list-container'>
                 <NewsCard newsObject={filteredNewsObject}/>
             </div>
