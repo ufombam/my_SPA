@@ -1,0 +1,30 @@
+.news-card {
+  border: 1px solid black;
+  height: 200px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 0px 20px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.news-card .card-header {
+  border: 1px solid black;
+  width: auto;
+}
+.news-card .card-footer {
+  border: 1px solid black;
+}
+.news-card .card-description {
+  border: 1px solid black;
+}
+.news-card .card-image {
+  border: 1px solid black;
+  width: 200px;
+  height: 100px;
+}
+.news-card .card-image img {
+  height: inherit;
+  width: inherit;
+}/*# sourceMappingURL=news-card.css.map */

@@ -8,6 +8,7 @@
   justify-content: space-between;
   border: 1px solid black;
   height: 50px;
+  margin-bottom: 10px;
 }
 .App .nav .categories {
   display: flex;
@@ -27,4 +28,8 @@
 .App .nav .countries .country-items {
   flex: 1;
   border: 1px solid black;
+}
+.App .app-body {
+  height: auto;
+  padding: 0px 20px 0px 20px;
 }/*# sourceMappingURL=App.css.map */

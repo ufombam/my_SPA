@@ -1,0 +1,9 @@
+.top-news-body {
+    display: flex;
+    flex-direction: column;
+    .news-list-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}

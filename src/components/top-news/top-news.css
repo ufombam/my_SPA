@@ -1,0 +1,9 @@
+.top-news-body {
+  display: flex;
+  flex-direction: column;
+}
+.top-news-body .news-list-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}/*# sourceMappingURL=top-news.css.map */
