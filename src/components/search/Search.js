@@ -3,7 +3,7 @@ import NewsCard from '../news-card/News-card';
 import { useState } from 'react';
 //import './Top-news.css';
 
-function Search({newsObject, filterNewsByCountry}) {
+function Search({newsObject, filterNewsByCountry, handleTabChange}) {
     // const [newNewsList, setNewNewsList] = useState(newsObject);
 
     // const filterNewsArray = () => {
@@ -25,7 +25,7 @@ function Search({newsObject, filterNewsByCountry}) {
             <input id='inputString'/>
             <div onClick={() => filterNewsByCountry()}>GO</div>
             <div className='news-list-container'>
-                <NewsCard newsObject={newsObject}/>
+                <NewsCard newsObject={newsObject} handleTabChange={handleTabChange}/>
             </div>
         </div>
     );

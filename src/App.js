@@ -4,6 +4,7 @@ import './App.css';
 import TopNews from './components/top-news/Top-news';
 import Search from './components/search/Search';
 import Categories from './components/categories/Categories';
+import Post from './components/post/post';
 
 function App() {
   const [route, setRoute] = useState("");
@@ -115,8 +116,8 @@ function App() {
     <div className="App">
       <div className='nav'>
         <div className='categories'>
-          <div className='nav-items' onClick={() => handleTabChange("top-news")}>Top News</div>
-          <div className='nav-items' onClick={() => handleTabChange("categories")}>Categories</div>
+          <div className='nav-items' onClick={() => {handleTabChange("top-news");filterNewsByCountry()}}>Top News</div>
+          <div className='nav-items' onClick={() => {handleTabChange("categories"); filterNewsByCountry()}}>Categories</div>
           <div className='nav-items' onClick={() => handleTabChange("search")}>Search</div>
         </div>
         <div className='countries'>
@@ -126,7 +127,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country}/> : <TopNews newsObject={countryNews} country={country}/>
+          route === "categories" ? <Categories newsObject={countryNews} handleTabChange={handleTabChange}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country} handleTabChange={handleTabChange}/> : route === "post" ? <Post /> : <TopNews newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
         }
       </div>
     </div>

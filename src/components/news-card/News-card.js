@@ -2,7 +2,7 @@ import React from 'react';
 import './news-card.css';
 
 
-function NewsCard({newsObject}) {
+function NewsCard({newsObject, handleTabChange}) {
 
     return (
             newsObject.map((x, i) => 
@@ -16,7 +16,7 @@ function NewsCard({newsObject}) {
                     <div className='card-description'>
                         {x.description}
                     </div>
-                    <div className='card-footer'>
+                    <div className='card-footer' onClick={handleTabChange('post')}>
                         more
                     </div>
                 </div>
