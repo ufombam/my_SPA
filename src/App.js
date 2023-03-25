@@ -10,6 +10,7 @@ function App() {
   const [filteredNews, setFilteredNews] = useState([]);
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
+  const [input, setInput] = useState('');
   const handleTabChange = e => setRoute(e);
   const rawNews = [
     {
@@ -71,7 +72,7 @@ function App() {
   ];
 
   useEffect(() => {
-    filterNewsByCountry()
+    filterNewsByCountry();
   }, [country])
 
   //handles switching of country and filtering of country specific news
@@ -117,7 +118,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews}/> : <TopNews newsObject={countryNews}/>
+          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews} input={input}/> : <TopNews newsObject={countryNews} country={country}/>
         }
       </div>
     </div>
