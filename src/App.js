@@ -10,7 +10,6 @@ function App() {
   const [filteredNews, setFilteredNews] = useState([]);
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
-  const [input, setInput] = useState('');
   const handleTabChange = e => setRoute(e);
   const rawNews = [
     {
@@ -44,7 +43,7 @@ function App() {
     {
         source: {
           id: null,
-          name: "Facebook",
+          name: "Youtube",
           country: "GB"
         },
         author: null,
@@ -75,32 +74,41 @@ function App() {
     filterNewsByCountry();
   }, [country])
 
-  //handles switching of country and filtering of country specific news
+  //handles switching of country and filtering of country specific news (categories and top stories)
   const handleCountryChange = country => {
     setCountry(country);
     filterNewsByCountry();
-    handleNewsSearch();
   };
 
   //Filter the raw news array depending on the country selected
   const filterNewsByCountry = () => {
-    let countrySpecificNews = rawNews.filter(data => data.source.country === country);
+    let countrySpecificNews = rawNews.filter(data => {
+      //condition for search page
+      if (route === "search") {
+        const inputElement = document.getElementsByTagName('input');
+        const inputString = inputElement[0].value;
+        let srchString = data.content.concat(data.description, data.title, data.source.name);
+        if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && data.source.country === country) {
+            return data
+        }
+      } else {return data.source.country === country} //condition for other pages
+    });
     return setCountryNews(countrySpecificNews);
   }
 
-//Search news and filter handler for Search Page
-  const handleNewsSearch = () => {
-    const inputElement = document.getElementsByTagName('input');
-    const inputString = inputElement[0].value;
-    //filter news for search page
-    let filteredNewsArray = rawNews.filter(x => {
-      let srchString = x.content.concat(x.description, x.title, x.source.name);
-      if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && x.source.country === country) {
-        return x
-      }
-    })
-    return setFilteredNews(filteredNewsArray)
-  }
+// //Search news and filter handler for Search Page
+//   const handleNewsSearch = () => {
+//     const inputElement = document.getElementsByTagName('input');
+//     const inputString = inputElement[0].value;
+//     //filter news for search page
+//     let filteredNewsArray = countryNews.filter(x => {
+//       let srchString = x.content.concat(x.description, x.title, x.source.name);
+//       if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && x.source.country === country) {
+//         return x
+//       }
+//     })
+//     return setFilteredNews(filteredNewsArray)
+//   }
 
 
   return (
@@ -118,7 +126,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews}/> : <TopNews newsObject={countryNews} country={country}/>
+          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country}/> : <TopNews newsObject={countryNews} country={country}/>
         }
       </div>
     </div>
