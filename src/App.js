@@ -102,8 +102,6 @@ function App() {
     return setFilteredNews(filteredNewsArray)
   }
 
-  const controlledInput = (e) => setInput(e.target.value);
-
 
   return (
     <div className="App">
@@ -120,7 +118,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews} input={input}/> : <TopNews newsObject={countryNews} country={country}/>
+          route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews} handleNewsSearch={handleNewsSearch} filteredNewsObject={filteredNews}/> : <TopNews newsObject={countryNews} country={country}/>
         }
       </div>
     </div>
