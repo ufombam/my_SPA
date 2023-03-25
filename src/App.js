@@ -102,6 +102,8 @@ function App() {
     return setFilteredNews(filteredNewsArray)
   }
 
+  const controlledInput = (e) => setInput(e.target.value);
+
 
   return (
     <div className="App">
