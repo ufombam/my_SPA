@@ -2,14 +2,14 @@ import React from 'react';
 import NewsCard from '../news-card/News-card';
 import './top-news.css';
 
-function TopNews({newsObject, country, handleTabChange}) {
+function TopNews({newsObject, country, handleTabChange, getCurrentPost}) {
     return (
         <div className="top-news-body">
             <div className='news-header'>
                 Top news from {`${country === 'GB' ? "Great Britain" : "United States"}`}:
             </div>
             <div className='news-list-container'>
-                <NewsCard newsObject={newsObject} handleTabChange={handleTabChange}/>
+                <NewsCard newsObject={newsObject} handleTabChange={handleTabChange} getCurrentPost={getCurrentPost}/>
             </div>
         </div>
     );

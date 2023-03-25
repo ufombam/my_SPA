@@ -2,18 +2,18 @@ import React from 'react';
 import './post.css';
 
 
-function Post() {
+function Post({currentPost}) {
     return (
         <div className="post-container" >
             <div className='post-header'>
-                Title
+                {currentPost.title}
             </div>
             <div className='post-image'>
-                <img alt='news-img' src='' />
+                <img alt='news-img' src={`${currentPost.image}`} />
             </div>
             <div className='post-description'>
                 <h2>
-                    CONTENT
+                    {currentPost.title}
                 </h2>
             </div>
             <div className='post-footer'>

@@ -11,7 +11,9 @@ function App() {
   const [filteredNews, setFilteredNews] = useState([]);
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
+  const [currentPost, setCurrentPost] = useState({});
   const handleTabChange = e => setRoute(e);
+
   const rawNews = [
     {
         source: {
@@ -75,6 +77,9 @@ function App() {
     filterNewsByCountry();
   }, [country])
 
+  //get the data of current news clicked upon
+  const getCurrentPost = (postObject) => setCurrentPost(postObject);
+  
   //handles switching of country and filtering of country specific news (categories and top stories)
   const handleCountryChange = country => {
     setCountry(country);
@@ -127,7 +132,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "post" ? <Post /> : route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country}/> : <TopNews newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
+          route === "post" ? <Post currentPost={currentPost}/> : route === "categories" ? <Categories newsObject={countryNews}/> : route === "search" ? <Search newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country}/> : <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
         }
       </div>
     </div>
