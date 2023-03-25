@@ -1,14 +1,16 @@
 import React from 'react';
+import NewsCard from '../news-card/News-card';
 //import './Top-news.css';
 
-function Search() {
+function Search({handleNewsSearch, filteredNewsObject}) {
     return (
         <div className="top-news-body">
-            <input />
+            <form action="#" onSubmit={handleNewsSearch}>
+                <input id='inputString'/>
+                <button type='submit'/>
+            </form>
             <div className='news-list-container'>
-                <div className=''>News List</div>
-                <div className=''>News List</div>
-                <div className=''>News List</div>
+                <NewsCard newsObject={filteredNewsObject}/>
             </div>
         </div>
     );

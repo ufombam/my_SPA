@@ -2,14 +2,14 @@ import React from 'react';
 import NewsCard from '../news-card/News-card';
 //import './Top-news.css';
 
-function Categories() {
+function Categories({newsObject}) {
     return (
-        <div className="categories-body">
+        <div className="top-news-body">
             <div className='news-header'>
                 Sports
             </div>
-            <div className=''>
-                <NewsCard />
+            <div className='news-list-container'>
+                <NewsCard newsObject={newsObject}/>
             </div>
         </div>
     );
