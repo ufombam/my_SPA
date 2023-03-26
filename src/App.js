@@ -1,13 +1,21 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import './App.css';
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Box from '@mui/material/Box';
+import ToggleButton from '@mui/material/ToggleButton';
+import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import TopNews from './components/top-news/Top-news';
 import Search from './components/search/Search';
 import Categories from './components/categories/Categories';
 import Post from './components/post/post';
 
+
 function App() {
-  const [route, setRoute] = useState("");
+  const [route, setRoute] = useState("top-news");
+  const [value, setValue] = useState('one');
+  const [alignment, setAlignment] = useState('GB');
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
   const [currentPost, setCurrentPost] = useState({});
@@ -79,10 +87,15 @@ function App() {
     }
   ];
 
+  //rerender on whenever state of country changes
   useEffect(() => {
     filterNewsByCountry();
   }, [country])
 
+  //set referer
+  const ref = () => {
+    
+  }
 
   //get the data of current news clicked upon
   const getCurrentPost = (postObject) => setCurrentPost(postObject);
@@ -109,17 +122,53 @@ function App() {
     return setCountryNews(countrySpecificNews);
   }
 
+  //MATERIAL UI FUNCTIONS//
+  const handleChange_a = (event, newAlignment) => {
+    setAlignment(newAlignment);
+  };
+  const handleChange = (event, newValue) => {
+    setValue(newValue);
+  };
+
+
   return (
     <div className="App">
       <div className='nav'>
         <div className='categories'>
-          <div className='nav-items' onClick={() => {handleTabChange("top-news");filterNewsByCountry()}}>Top News</div>
-          <div className='nav-items' onClick={() => {handleTabChange("categories"); filterNewsByCountry()}}>Categories</div>
-          <div className='nav-items' onClick={() => handleTabChange("search")}>Search</div>
+        <Box sx={{ width: '100%' }}>
+          <Tabs
+            value={value}
+            onChange={handleChange}
+            textColor="secondary"
+            indicatorColor="secondary"
+            aria-label="secondary tabs example"
+          >
+            <Tab value="one" label="Top News" onClick={() => {
+            handleTabChange("top-news");
+            filterNewsByCountry();
+            }}/>
+            <Tab value="two" label="Categories" onClick={() => {
+            handleTabChange("categories");
+            filterNewsByCountry();
+            }}/>
+            <Tab value="three" label="Search" onClick={() => {
+            handleTabChange("search");
+            filterNewsByCountry();
+            }}/>
+          </Tabs>
+        </Box>
         </div>
         <div className='countries'>
-          <div className='country-items' onClick={() => handleCountryChange("US")}>US</div>
-          <div className='country-items' onClick={() => handleCountryChange("GB")}>GB</div>
+          <ToggleButtonGroup
+            color="primary"
+            value={alignment}
+            exclusive
+            onChange={handleChange_a}
+            aria-label="Platform"
+          >
+            <ToggleButton value="US" onClick={() => handleCountryChange("US")}>US</ToggleButton>
+            <ToggleButton value="GB" onClick={() => handleCountryChange("GB")}>GB</ToggleButton>
+          </ToggleButtonGroup>
         </div>
       </div>
       <div className='app-body'>

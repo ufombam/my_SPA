@@ -1,6 +1,11 @@
+
 .App {
     box-sizing: border-box;
     margin: 0;
+    .active {
+        background-color: red;
+        color: white;
+    }
     .nav {
         display: flex;
         flex-direction: row;
@@ -17,6 +22,10 @@
                 flex: 1;
                 border: 1px solid black;
             }
+            .nav-items:hover {
+                background-color: red;
+                color: white;
+            }
         }
         .countries {
             display: flex;
@@ -25,6 +34,10 @@
             .country-items {
                 flex: 1;
                 border: 1px solid black;
+            }
+            .country-items:hover {
+                background-color: red;
+                color: white;
             }
         }
     }
