@@ -2,7 +2,7 @@ import React from 'react';
 import './news-card.css';
 
 
-function NewsCard({newsObject, handleTabChange, getCurrentPost}) {
+function NewsCard({newsObject, getCurrentPost, postRouter}) {
 
     return (
             newsObject.map((x, i) => 
@@ -17,12 +17,12 @@ function NewsCard({newsObject, handleTabChange, getCurrentPost}) {
                         {x.description}
                     </div>
                     <div className='card-footer' 
-                        onClick={() => {handleTabChange("post"); getCurrentPost({
+                        onClick={() => {postRouter("view"); getCurrentPost({
                             title: x.title,
                             image: x.urlToImage,
-                            description: x.description
+                            description: x.content
                         })}}>
-                        more
+                        {"more>>"}
                     </div>
                 </div>
             )

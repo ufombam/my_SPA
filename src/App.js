@@ -19,10 +19,10 @@ function App() {
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
   const [currentPost, setCurrentPost] = useState({});
-  const [referer, setReferer] = useState([]);
+  const [postRef, setPostRef] = useState('');
   
-  //get current route
-  const handleTabChange = e => setRoute(e);
+  //get current route and reset postRef
+  const handleTabChange = e => {setRoute(e); setPostRef('')};
 
   const rawNews = [
     {
@@ -38,7 +38,7 @@ function App() {
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
         publishedAt: "2023-03-24T02:53:03Z",
-        content: "lorem adfasdfasdh ahdfaksdfha  asdhfasdfjasd asdvasdjhasdfjhasdfjhad  asdfajsdfas jjasdf asdfasdf today"
+        content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum uisquam eius sed odit fugiat iusto fuga praesentium option eaque rerum! Provident similique accusantium nemo autem. Veritatis aecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit"
     },
     {
         source: {
@@ -53,7 +53,7 @@ function App() {
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
         publishedAt: "2023-03-24T02:53:03Z",
-        content: "lorem adfasdfasdh ahdfaksdfha  asdhfasdfjasd asdvasdjhasdfjhasdfjhad  asdfajsdfas jjasdf asdfasdf today"
+        content:  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum uisquam eius sed odit fugiat iusto fuga praesentium option eaque rerum! Provident similique accusantium nemo autem. Veritatis aecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit"
     },
     {
         source: {
@@ -68,7 +68,7 @@ function App() {
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
         publishedAt: "2023-03-24T02:53:03Z",
-        content: "lorem adfasdfasdh ahdfaksdfha  asdhfasdfjasd asdvasdjhasdfjhasdfjhad  asdfajsdfas jjasdf asdfasdf today"
+        content:  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum uisquam eius sed odit fugiat iusto fuga praesentium option eaque rerum! Provident similique accusantium nemo autem. Veritatis aecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit"
     },
     {
         source: {
@@ -83,7 +83,7 @@ function App() {
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
         urlToImage: "https://i.ytimg.com/vi/3eC14g8pYM0/maxresdefault.jpg",
         publishedAt: "2023-03-24T02:53:03Z",
-        content: "lorem adfasdfasdh ahdfaksdfha  asdhfasdfjasd asdvasdjhasdfjhasdfjhad  asdfajsdfas jjasdf asdfasdf today"
+        content:  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum uisquam eius sed odit fugiat iusto fuga praesentium option eaque rerum! Provident similique accusantium nemo autem. Veritatis aecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit"
     }
   ];
 
@@ -93,8 +93,8 @@ function App() {
   }, [country])
 
   //set referer
-  const ref = () => {
-    
+  const postRouter = (post) => {
+    setPostRef(post)
   }
 
   //get the data of current news clicked upon
@@ -173,12 +173,12 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "post" ? <Post currentPost={currentPost} route={route}/> :
+          postRef === "view" ? <Post currentPost={currentPost} route={route} handleTabChange={handleTabChange}/> :
           route === "categories" ? 
-          <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} handleTabChange={handleTabChange}/> :
+          <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} handleTabChange={handleTabChange} postRouter={postRouter}/> :
           route === "search" ?
-          <Search getCurrentPost={getCurrentPost} newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country} handleTabChange={handleTabChange}/> :
-          <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange}/>
+          <Search getCurrentPost={getCurrentPost} newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country} handleTabChange={handleTabChange} postRouter={postRouter}/> :
+          <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange} postRouter={postRouter}/>
         }
       </div>
     </div>

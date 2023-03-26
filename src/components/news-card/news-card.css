@@ -1,5 +1,7 @@
 .news-card {
   border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   height: 200px;
   width: 250px;
   display: flex;
@@ -10,18 +12,14 @@
   margin-bottom: 10px;
 }
 .news-card .card-header {
-  border: 1px solid black;
   width: auto;
+  margin-top: 5px;
 }
 .news-card .card-footer {
-  border: 1px solid black;
-}
-.news-card .card-description {
-  border: 1px solid black;
+  cursor: pointer;
 }
 .news-card .card-image {
-  border: 1px solid black;
-  width: 200px;
+  width: inherit;
   height: 100px;
 }
 .news-card .card-image img {

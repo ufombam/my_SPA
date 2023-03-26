@@ -1,14 +1,14 @@
 .post-container {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    //border: 1px solid black;
     height: 100%;
     text-align: center;
     .post-header {
-        border: 1px solid black;
+        //border: 1px solid black;
     }
     .post-image {
-        border: 1px solid black;
+        //border: 1px solid black;
         height: 50vh;
         width: 50vw;
         align-self: center;
@@ -18,7 +18,14 @@
         }
     }
     .post-description {
-        border: 1px solid black;
+        //border: 1px solid black;
         height: 30vh;
+    }
+    
+    .post-footer {
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+        width: fit-content;
     }
 }
