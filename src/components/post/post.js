@@ -2,9 +2,10 @@ import React from 'react';
 import './post.css';
 
 
-function Post({currentPost}) {
+function Post({currentPost, route}) {
     return (
         <div className="post-container" >
+            {console.log(route)}
             <div className='post-header'>
                 {currentPost.title}
             </div>
@@ -16,7 +17,7 @@ function Post({currentPost}) {
                     {currentPost.title}
                 </h2>
             </div>
-            <div className='post-footer'>
+            <div className='post-footer' >
                 Back to list
             </div>
         </div>

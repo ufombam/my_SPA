@@ -8,10 +8,12 @@ import Post from './components/post/post';
 
 function App() {
   const [route, setRoute] = useState("");
-  const [filteredNews, setFilteredNews] = useState([]);
   const [countryNews, setCountryNews] = useState([]);
   const [country, setCountry] = useState('GB');
   const [currentPost, setCurrentPost] = useState({});
+  const [referer, setReferer] = useState([]);
+  
+  //get current route
   const handleTabChange = e => setRoute(e);
 
   const rawNews = [
@@ -22,6 +24,7 @@ function App() {
           country: "US"
         },
         author: null,
+        category: "sports",
         title: "United State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
@@ -36,6 +39,7 @@ function App() {
           country: "US"
         },
         author: null,
+        category: "sports",
         title: "Newyork State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
@@ -50,6 +54,7 @@ function App() {
           country: "GB"
         },
         author: null,
+        category: "economy",
         title: "Kansas State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
@@ -64,6 +69,7 @@ function App() {
           country: "GB"
         },
         author: null,
+        category: "education",
         title: "Kansas State vs. Michigan State",
         description: "Kansas State survived a thrilling OT showdown with ...",
         url: "https://www.youtube.com/watch?v=3eC14g8pYM0",
@@ -76,6 +82,7 @@ function App() {
   useEffect(() => {
     filterNewsByCountry();
   }, [country])
+
 
   //get the data of current news clicked upon
   const getCurrentPost = (postObject) => setCurrentPost(postObject);
@@ -102,21 +109,6 @@ function App() {
     return setCountryNews(countrySpecificNews);
   }
 
-// //Search news and filter handler for Search Page
-//   const handleNewsSearch = () => {
-//     const inputElement = document.getElementsByTagName('input');
-//     const inputString = inputElement[0].value;
-//     //filter news for search page
-//     let filteredNewsArray = countryNews.filter(x => {
-//       let srchString = x.content.concat(x.description, x.title, x.source.name);
-//       if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && x.source.country === country) {
-//         return x
-//       }
-//     })
-//     return setFilteredNews(filteredNewsArray)
-//   }
-
-
   return (
     <div className="App">
       <div className='nav'>
@@ -132,7 +124,7 @@ function App() {
       </div>
       <div className='app-body'>
         {
-          route === "post" ? <Post currentPost={currentPost}/> :
+          route === "post" ? <Post currentPost={currentPost} route={route}/> :
           route === "categories" ? 
           <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} handleTabChange={handleTabChange}/> :
           route === "search" ?
