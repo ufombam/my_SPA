@@ -1,15 +1,22 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
 import './top-news.css';
+import { IComponentProps } from '../../UserInterface';
+//import './Top-news.css';
 
-function TopNews({newsObject, country, handleTabChange, getCurrentPost, postRouter}) {
+const TopNews: React.FC<IComponentProps> = ({
+        newsObject,
+        country,
+        getCurrentPost,
+        postRouter
+    }): JSX.Element => {
     return (
         <div className="top-news-body">
             <div className='news-header'>
                 Top news from {`${country === 'GB' ? "Great Britain" : "United States"}`}:
             </div>
             <div className='news-list-container'>
-                <NewsCard newsObject={newsObject} handleTabChange={handleTabChange} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
+                <NewsCard newsObject={newsObject} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
             </div>
         </div>
     );

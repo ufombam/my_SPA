@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useState, useEffect } from 'react';
 import './App.css';
 import Tabs from '@mui/material/Tabs';
@@ -10,19 +10,24 @@ import TopNews from './components/top-news/Top-news';
 import Search from './components/search/Search';
 import Categories from './components/categories/Categories';
 import Post from './components/post/post';
+import { ICurrentPost, ICountryNews } from './UserInterface';
 
 
 function App() {
-  const [route, setRoute] = useState("top-news");
-  const [value, setValue] = useState('one');
-  const [alignment, setAlignment] = useState('GB');
-  const [countryNews, setCountryNews] = useState([]);
-  const [country, setCountry] = useState('GB');
-  const [currentPost, setCurrentPost] = useState({});
-  const [postRef, setPostRef] = useState('');
+  const [route, setRoute] = useState<string>("top-news");
+  const [value, setValue] = useState<string>('one');
+  const [alignment, setAlignment] = useState<string>('GB');
+  const [countryNews, setCountryNews] = useState <ICountryNews[]>([]);
+  const [country, setCountry] = useState<string>('GB');
+  const [currentPost, setCurrentPost] = useState<ICurrentPost>({
+    title: "",
+    image: "",
+    description: ""
+  });
+  const [postRef, setPostRef] = useState<string>('');
   
   //get current route and reset postRef
-  const handleTabChange = e => {setRoute(e); setPostRef('')};
+  const handleTabChange = (e: string): void => {setRoute(e); setPostRef('')};
 
   const rawNews = [
     {
@@ -86,47 +91,46 @@ function App() {
         content:  "Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum numquam blanditiis harum uisquam eius sed odit fugiat iusto fuga praesentium option eaque rerum! Provident similique accusantium nemo autem. Veritatis aecati tenetur iure eius earum ut molestias architecto voluptate aliquamnihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit"
     }
   ];
-
   //rerender on whenever state of country changes
   useEffect(() => {
     filterNewsByCountry();
   }, [country])
 
   //set referer
-  const postRouter = (post) => {
+  const postRouter = (post : string): void => {
     setPostRef(post)
   }
 
   //get the data of current news clicked upon
-  const getCurrentPost = (postObject) => setCurrentPost(postObject);
+  const getCurrentPost = (postObject: ICurrentPost): void => {setCurrentPost(postObject)};
   
   //handles switching of country and filtering of country specific news (categories and top stories)
-  const handleCountryChange = country => {
+  const handleCountryChange = (country: string) => {
     setCountry(country);
     filterNewsByCountry();
   };
 
   //Filter the raw news array depending on the country selected
-  const filterNewsByCountry = () => {
+  const filterNewsByCountry = (): void => {
     let countrySpecificNews = rawNews.filter(data => {
       //condition for search page
       if (route === "search") {
         const inputElement = document.getElementsByTagName('input');
-        const inputString = inputElement[0].value;
-        let srchString = data.content.concat(data.description, data.title, data.source.name);
+        const inputString: string = inputElement[0].value;
+        let srchString: string = data.content.concat(data.description, data.title, data.source.name);
         if (srchString.toLocaleLowerCase().includes(inputString.toLocaleLowerCase()) && data.source.country === country) {
             return data
         }
       } else {return data.source.country === country} //condition for other pages
     });
-    return setCountryNews(countrySpecificNews);
+    setCountryNews(countrySpecificNews);
   }
 
   //MATERIAL UI FUNCTIONS//
-  const handleChange_a = (event, newAlignment) => {
+  const handleChange_a = (event: any, newAlignment: any) => {
     setAlignment(newAlignment);
   };
-  const handleChange = (event, newValue) => {
+  const handleChange = (event: any, newValue: any) => {
     setValue(newValue);
   };
 
@@ -175,7 +179,7 @@ function App() {
         {
           postRef === "view" ? <Post currentPost={currentPost} route={route} handleTabChange={handleTabChange}/> :
           route === "categories" ? 
-          <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} handleTabChange={handleTabChange} postRouter={postRouter}/> :
+          <Categories getCurrentPost={getCurrentPost} newsObject={countryNews} postRouter={postRouter}/> :
           route === "search" ?
           <Search getCurrentPost={getCurrentPost} newsObject={countryNews}  filterNewsByCountry={filterNewsByCountry} country={country} handleTabChange={handleTabChange} postRouter={postRouter}/> :
           <TopNews getCurrentPost={getCurrentPost} newsObject={countryNews} country={country} handleTabChange={handleTabChange} postRouter={postRouter}/>

@@ -1,8 +1,17 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
 import './search.css';
+import { IComponentProps } from '../../UserInterface';
+//import './Top-news.css';
 
-function Search({newsObject, filterNewsByCountry, handleTabChange, getCurrentPost, postRouter, country}) {
+const Search: React.FC<IComponentProps> = ({
+    newsObject,
+    getCurrentPost,
+    postRouter,
+    filterNewsByCountry,
+    country
+}
+): JSX.Element => {
     return (
         <div className="top-news-body">
             <div className='news-header'>
@@ -11,7 +20,7 @@ function Search({newsObject, filterNewsByCountry, handleTabChange, getCurrentPos
             <input id='inputString' placeholder='search term'/>
             <div onClick={() => filterNewsByCountry()}>GO</div>
             <div className='news-list-container'>
-                <NewsCard newsObject={newsObject} handleTabChange={handleTabChange} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
+                <NewsCard newsObject={newsObject} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
             </div>
         </div>
     );

@@ -17,7 +17,8 @@
 .App .nav .categories {
   display: flex;
   flex-direction: row;
-  width: 50%;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 .App .nav .countries {
   display: flex;

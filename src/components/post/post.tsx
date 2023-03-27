@@ -1,8 +1,16 @@
-import React from 'react';
 import './post.css';
+import { ICurrentPost } from '../../UserInterface';
 
-
-function Post({currentPost, route, handleTabChange}) {
+function Post ({
+        currentPost,
+        route,
+        handleTabChange
+    }:
+    {
+        currentPost: ICurrentPost,
+        route: string,
+        handleTabChange: any,
+    }): JSX.Element {
     return (
         <div className="post-container" >
             <div className='post-header'>

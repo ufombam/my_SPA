@@ -1,11 +1,21 @@
-import React from 'react';
 import './news-card.css';
+import { ICountryNews } from '../../UserInterface';
+//import './Top-news.css';
 
 
-function NewsCard({newsObject, getCurrentPost, postRouter}) {
+
+function NewsCard ({
+        newsObject,
+        getCurrentPost,
+        postRouter,
+    }: {
+        newsObject: ICountryNews[],
+        getCurrentPost: any,
+        postRouter: any,
+    }): JSX.Element {
 
     return (
-            newsObject.map((x, i) => 
+            <>{newsObject.map((x, i) => 
                 <div className="news-card" key={i}>
                     <div className='card-header'>
                         {x.title}
@@ -25,8 +35,8 @@ function NewsCard({newsObject, getCurrentPost, postRouter}) {
                         {"more>>"}
                     </div>
                 </div>
-            )
-        
+            )}
+        </>
     );
 }
 

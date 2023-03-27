@@ -1,8 +1,12 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
+import { IComponentProps } from '../../UserInterface';
 //import './Top-news.css';
-
-function Categories({newsObject, handleTabChange, getCurrentPost, postRouter}) {
+const Categories: React.FC<IComponentProps> = ({
+        newsObject,
+        getCurrentPost,
+        postRouter
+    }): JSX.Element => {
     return (
         <>
             <div className="top-news-body">
@@ -10,7 +14,7 @@ function Categories({newsObject, handleTabChange, getCurrentPost, postRouter}) {
                     Sports
                 </div>
                 <div className='news-list-container'>
-                    <NewsCard newsObject={newsObject} handleTabChange={handleTabChange} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
+                    <NewsCard newsObject={newsObject} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
                 </div>
             </div>
         </>

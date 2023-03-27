@@ -17,7 +17,7 @@
         .categories {
             display: flex;
             flex-direction: row;
-            width: 50%;
+            width: fit-content;
             //border: 1px solid black;
         }
         .countries {
