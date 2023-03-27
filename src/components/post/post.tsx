@@ -1,5 +1,5 @@
 import './post.css';
-import { ICurrentPost } from '../../UserInterface';
+import { ICurrentPost } from '../../ComponentsInterface';
 
 function Post ({
         currentPost,

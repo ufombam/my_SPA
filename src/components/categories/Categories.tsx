@@ -1,6 +1,6 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
-import { IComponentProps } from '../../UserInterface';
+import { IComponentProps } from '../../ComponentsInterface';
 //import './Top-news.css';
 const Categories: React.FC<IComponentProps> = ({
         newsObject,

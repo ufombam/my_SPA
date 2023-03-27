@@ -1,7 +1,7 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
 import './top-news.css';
-import { IComponentProps } from '../../UserInterface';
+import { IComponentProps } from '../../ComponentsInterface';
 //import './Top-news.css';
 
 const TopNews: React.FC<IComponentProps> = ({

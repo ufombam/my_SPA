@@ -1,7 +1,7 @@
 import React from 'react';
 import NewsCard from '../news-card/News-card';
 import './search.css';
-import { IComponentProps } from '../../UserInterface';
+import { IComponentProps } from '../../ComponentsInterface';
 //import './Top-news.css';
 
 const Search: React.FC<IComponentProps> = ({

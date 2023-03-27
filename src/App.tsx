@@ -9,7 +9,7 @@ import TopNews from './components/top-news/Top-news';
 import Search from './components/search/Search';
 import Categories from './components/categories/Categories';
 import Post from './components/post/post';
-import { ICurrentPost, ICountryNews } from './UserInterface';
+import { ICurrentPost, ICountryNews } from './ComponentsInterface';
 
 
 function App() {

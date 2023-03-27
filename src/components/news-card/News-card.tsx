@@ -1,5 +1,5 @@
 import './news-card.css';
-import { ICountryNews } from '../../UserInterface';
+import { ICountryNews } from '../../ComponentsInterface';
 //import './Top-news.css';
 
 
