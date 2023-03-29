@@ -13,9 +13,10 @@ const Categories: React.FC<IComponentProps> = ({
                 <div className='news-header'>
                     Sports
                 </div>
+                {newsObject.length <= 2 ? <h3>Loading....</h3> :
                 <div className='news-list-container'>
                     <NewsCard newsObject={newsObject} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
-                </div>
+                </div>}
             </div>
         </>
     );

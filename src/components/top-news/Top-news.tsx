@@ -13,11 +13,12 @@ const TopNews: React.FC<IComponentProps> = ({
     return (
         <div className="top-news-body">
             <div className='news-header'>
-                Top news from {`${country === 'GB' ? "Great Britain" : "United States"}`}:
+                Top news from {`${country === 'GB' ? "Great Britain" : country === 'US' ? "United States" : "US & UK"}`}:
             </div>
+            {newsObject.length <= 2 ? <h3>Loading....</h3> :
             <div className='news-list-container'>
                 <NewsCard newsObject={newsObject} getCurrentPost={getCurrentPost} postRouter={postRouter}/>
-            </div>
+            </div>}
         </div>
     );
 }

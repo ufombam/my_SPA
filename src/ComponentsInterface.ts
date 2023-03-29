@@ -9,15 +9,15 @@ export interface ICountryNews {
     source: {
         id: null|string;
         name: string;
-        country: string;
+        country?: string;
     };
-    author: null;
-    category: string;
+    author: string;
     title: string;
     description: string;
     url: string;
     urlToImage: string;
     publishedAt: string;
+    category?: string;
     content: string;
 }
 
