@@ -15,7 +15,7 @@ import { ICurrentPost, ICountryNews } from './ComponentsInterface';
 function App() {
   const [route, setRoute] = useState<string>("top-news");
   const [value, setValue] = useState<string>('one');
-  const [alignment, setAlignment] = useState<string>('US');
+  const [alignment, setAlignment] = useState<string>('GB');
   const [countryNews, setCountryNews] = useState <ICountryNews[]>([
     {
       source: {
@@ -609,6 +609,7 @@ function App() {
       
         setTimeout(() => {
           setUsNews(rawUsNews)
+          filterNewsByCountry();
         }, 5000);
     
     // fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey=5073e0943df64f3e8d4bf510b980259d")
@@ -616,10 +617,10 @@ function App() {
 
         setTimeout(() => {
           setGbNews(rawGbNews)
+          filterNewsByCountry();
         }, 5000);
       
-
-  }, [alignment, countryNews, usNews, gbNews]);
+  }, [alignment]);
 
   //Filter the raw news array depending on the country selected
   const filterNewsByCountry = () => {
