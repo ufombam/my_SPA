@@ -604,7 +604,7 @@ function App() {
 ]
 
     // fetch("https://newsapi.org/v2/top-headlines?country=us&apiKey=5073e0943df64f3e8d4bf510b980259d")
-    // .then(response => response.json()).then((data) => setUsNews(data)).catch(console.log)
+    // .then(response => response.json()).then((data) => {setUsNews(data);filterNewsByCountry()}).catch(console.log)
 
       
         setTimeout(() => {
@@ -613,7 +613,7 @@ function App() {
         }, 5000);
     
     // fetch("https://newsapi.org/v2/top-headlines?country=gb&apiKey=5073e0943df64f3e8d4bf510b980259d")
-    // .then(response => response.json()).then((data) => setGbNews).catch(console.log)
+    // .then(response => response.json()).then((data) => {setGbNews; filterNewsByCountry()}).catch(console.log)
 
         setTimeout(() => {
           setGbNews(rawGbNews)
